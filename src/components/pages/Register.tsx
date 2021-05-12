@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Form, Button, Col, InputGroup } from "react-bootstrap";
+import { UserContext } from "../../auth/UserContext";
 
 function Register() {
+  //const {auth, setAuth} = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [firstname, setFirstName] = useState("");
@@ -21,7 +23,12 @@ function Register() {
   }
 
   function handleSubmit(event: { preventDefault: () => void }) {
+    setRequest(true);
     event.preventDefault();
+  }
+
+  function handleClick() {
+    //() => setRequest(true);
   }
 
   useEffect(() => {
@@ -147,7 +154,7 @@ function Register() {
                       className="btn btn-danger float-right"
                       block
                       disabled={!validateForm() || request}
-                      onClick={() => setRequest(true)}
+                      onClick={handleClick}
                     >
                       Register
                     </Button>

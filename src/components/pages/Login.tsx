@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Nav, Form, Button } from "react-bootstrap";
+import { UserContext } from "../../auth/UserContext";
 
 function Login() {
+  //const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [request, setRequest] = useState(false);
@@ -19,7 +21,7 @@ function Login() {
     if (request) {
       var flag = false;
       var storage = JSON.parse(window.localStorage.getItem("users")!);
-      var user = [email, password];
+      var credentials = [email, password];
       if (storage) {
         for (var i in storage) {
           if (storage[i][0] === email && storage[i][1] === password) {
@@ -27,7 +29,8 @@ function Login() {
           }
         }
         if (flag) {
-          window.localStorage.setItem("token", JSON.stringify(user));
+          window.localStorage.setItem("token", JSON.stringify(credentials));
+          //setUser(credentials);
         } else {
           alert("The credentials provided are not registered!");
         }
