@@ -4,7 +4,7 @@ import { Nav, Form, Button } from "react-bootstrap";
 import { UserContext } from "../../auth/UserContext";
 
 function Login() {
-  //const { user, setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [request, setRequest] = useState(false);
@@ -30,14 +30,14 @@ function Login() {
         }
         if (flag) {
           window.localStorage.setItem("token", JSON.stringify(credentials));
-          //setUser(credentials);
+          // setUser(credentials);
         } else {
           alert("The credentials provided are not registered!");
         }
       }
       setRequest(false);
     }
-  }, [request]);
+  }, [email, password, request]);
 
   return (
     <section className="login-section">

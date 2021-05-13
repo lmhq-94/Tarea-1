@@ -4,7 +4,7 @@ import { Form, Button, Col, InputGroup } from "react-bootstrap";
 import { UserContext } from "../../auth/UserContext";
 
 function Register() {
-  //const {auth, setAuth} = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [firstname, setFirstName] = useState("");
@@ -54,7 +54,7 @@ function Register() {
       window.localStorage.setItem("users", JSON.stringify(list));
       setRequest(false);
     }
-  }, [request]);
+  }, [email, firstname, lastname, password, request, username]);
 
   return (
     <section className="register-section">

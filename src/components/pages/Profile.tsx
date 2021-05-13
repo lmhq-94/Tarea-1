@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import { Form, Button, Col } from "react-bootstrap";
+import React, { useContext, useState } from "react"; 
+import { Form, Button } from "react-bootstrap";
 import { UserContext } from "../../auth/UserContext";
 
 function Profile() {
-  //const {auth, setAuth} = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [firstname, setFirstName] = useState("");
   const [lastname, setLastName] = useState("");
